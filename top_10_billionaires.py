@@ -1,5 +1,6 @@
 #@auto-fold regex /./
-import pandas as pd,time,requests as r,os, python_helper as ph,sys
+import pandas as pd,time,requests as r,os,sys
+from python_helpers import python_helper as ph
 sys.path.insert(0,ph.root_fp+'IG-content-publisher')
 import instagram as ig, img_gur
 creds = ig.ig_users.get('top_10_billionaires')
