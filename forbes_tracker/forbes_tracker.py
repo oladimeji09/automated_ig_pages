@@ -1,7 +1,7 @@
 #@auto-fold regex /./
 import pandas as pd,time,requests as r,os,sys
 from python_helpers import python_helper as ph
-sys.path.insert(0,ph.root_fp+'ig_content_publisher/automated_ig_pages')
+sys.path.insert(0,ph.root_fp+'ig_content_publisher/publisher/')
 import instagram as ig, img_gur
 creds = ig.ig_users.get('forbes_tracker')
 
