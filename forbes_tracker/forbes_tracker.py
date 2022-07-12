@@ -1,21 +1,13 @@
 #@auto-fold regex /./
 import pandas as pd,time,requests as r,os,sys
 from python_helpers import python_helper as ph
-<<<<<<< HEAD
-sys.path.insert(0,ph.root_fp+'ig_content_publisher/publisher')
-=======
 sys.path.insert(0,ph.root_fp+'ig_content_publisher/automated_ig_pages')
->>>>>>> 224dc30698b4b5a955e4b80a2037ea57d8d3688c
 import instagram as ig, img_gur
 creds = ig.ig_users.get('forbes_tracker')
 
 def ig_id():
     """Get IG creds"""
-<<<<<<< HEAD
     creds = ig.ig_users.get('forbes_tracker')
-=======
-    creds = ig.ig_users.get('top_10_billionaires')
->>>>>>> 224dc30698b4b5a955e4b80a2037ea57d8d3688c
     token = ig.get_token(creds.get('user_name'))
     ig_id =  ig.get_ig_acc(token.get('id')).get('id')
     return ig_id
@@ -33,19 +25,11 @@ def create_content(filename='',content_url=''):
     """Create the folder containing the content if it doesn't already exist
         The dump the pictures into the folder"""
     try:
-<<<<<<< HEAD
         os.mkdir(ph.root_fp+'working_files/forbes_tracker')
     except:
         pass
     try:
         with open(ph.root_fp+'working_files/forbes_tracker/'+filename, 'wb+') as f:
-=======
-        os.mkdir(ph.root_fp+'working_files/top_10_billionaires')
-    except:
-        pass
-    try:
-        with open(ph.root_fp+'working_files/top_10_billionaires/'+filename, 'wb+') as f:
->>>>>>> 224dc30698b4b5a955e4b80a2037ea57d8d3688c
             f.write(r.get(content_url).content)
     except:
         pass
@@ -72,11 +56,7 @@ def get_data(num_rich_ppl):
             item.update({"birthDate":str(item.get('birthDate'))[:-3]})
             item.update({"squareImage" : img_url.format(item.get('squareImage').split('imageserve/')[1].split('/')[0],item.get('squareImage').split('?')[1])})
             img_name = str(item.get('rank'))+'_'+item.get('uri')+'.png'
-<<<<<<< HEAD
             item.update({"img_path": ph.root_fp+'working_files/forbes_tracker/'+img_name})
-=======
-            item.update({"img_path": ph.root_fp+'working_files/top_10_billionaires/'+img_name})
->>>>>>> 224dc30698b4b5a955e4b80a2037ea57d8d3688c
             create_content(img_name,item.get('squareImage'))
             for del_item in ['bioSuppress','listUri','wealthList','familyList','lastName']:
                 del item[del_item]
@@ -95,11 +75,7 @@ def transform_data(num_rich_ppl):
     df = df[::-1]
     return df
 
-<<<<<<< HEAD
 def upload_media(num_rich_ppl=1):
-=======
-def upload_media(num_rich_ppl=3):
->>>>>>> 224dc30698b4b5a955e4b80a2037ea57d8d3688c
     """Upload all pictures instagram with caption"""
     df = transform_data(num_rich_ppl=num_rich_ppl)
     for index,row in df.iterrows():
@@ -133,13 +109,6 @@ def unfollow_user(users = 10):
     for user in unfollow_users:
         ig.un_follow_user(user, 'unfollow')
         print('Unfollowed user '+ str(user))
-<<<<<<< HEAD
     ig.logout()
 # upload_media
 # ig.delete_media(creds.get('user_name'), creds.get('password'),2)
-=======
-        time.sleep(30)
-    ig.logout()
-
-# ig.delete_media(creds.get('user_name'), creds.get('password'),47)
->>>>>>> 224dc30698b4b5a955e4b80a2037ea57d8d3688c

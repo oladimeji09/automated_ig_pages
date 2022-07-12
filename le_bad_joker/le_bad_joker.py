@@ -41,12 +41,7 @@ def follow_and_comment(subject='comedy', tags=2, top_media=1, follow = 'Y'):
     """Comment on post with tags and follow the users"""
     ig.follow_and_comment(creds.get('user_name'), creds.get('password'),ig.ig_tags.tags(subject,tags), ig.ig_tags.comments(1)[0],top_media,
                             comment_fp = ph.root_fp+'/automated_ig_pages/le_bad_joker/deleted_comment.json',follow=follow)
-<<<<<<< HEAD
 
-# follow_and_comment(subject='comedy', tags=2, top_media=1, follow = 'Y')
-=======
-                            
->>>>>>> 224dc30698b4b5a955e4b80a2037ea57d8d3688c
 # def unfollow_user(users = 1):
 #     ig.login(creds.get('user_name'), creds.get('password'))
 #     user_id = ig.user_info_by_urs(creds.get('user_name')).pk
