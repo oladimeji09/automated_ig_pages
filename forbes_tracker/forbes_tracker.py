@@ -1,11 +1,13 @@
 #@auto-fold regex /./
 import pandas as pd,time,requests as r,os,sys
 from python_helpers import python_helper as ph
-sys.path.insert(0,ph.root_fp+'IG-content-publisher')
+sys.path.insert(0,ph.root_fp+'ig_content_publisher/automated_ig_pages')
 import instagram as ig, img_gur
-creds = ig.ig_users.get('top_10_billionaires')
+creds = ig.ig_users.get('forbes_tracker')
 
 def ig_id():
+    """Get IG creds"""
+    creds = ig.ig_users.get('top_10_billionaires')
     token = ig.get_token(creds.get('user_name'))
     ig_id =  ig.get_ig_acc(token.get('id')).get('id')
     return ig_id
@@ -109,3 +111,5 @@ def unfollow_user(users = 10):
         print('Unfollowed user '+ str(user))
         time.sleep(30)
     ig.logout()
+
+# ig.delete_media(creds.get('user_name'), creds.get('password'),47)
